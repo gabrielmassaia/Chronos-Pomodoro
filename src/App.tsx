@@ -2,6 +2,7 @@ import { Container } from './components/Container';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
+import { DefaultInput } from './components/DefaultInput';
 
 import './styles/theme.css';
 import './styles/global.css';
@@ -21,21 +22,21 @@ export function App() {
 
       <Container>
         <form className='form' action=''>
-          <div className='formRow'></div>
-          <label htmlFor='input'>Missão</label>
-          <input id='input' type='text' />
+          <div className='formRow'>
+            <DefaultInput id='input' type='text' labelText='Task' />
+          </div>
 
           <div className='classRow'>
             <p>Lorem ipsum dolor sit amet.</p>
           </div>
 
-          <div className='classRow'>
+          <div className='formRow'>
             <p>Ciclos</p>
             <p>0 0 0 0 0</p>
           </div>
 
-          <div className='classRow'>
-            <button></button>
+          <div className='formRow'>
+            <button>Enviar</button>
           </div>
         </form>
       </Container>
