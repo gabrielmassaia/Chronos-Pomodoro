@@ -4,6 +4,7 @@ import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
 import { DefaultInput } from './components/DefaultInput';
 import { Cycles } from './components/Cycles';
+import { DefaultButton } from './components/DefaultButton';
 
 import './styles/theme.css';
 import './styles/global.css';
@@ -39,7 +40,7 @@ export function App() {
           <div className='formRow'></div>
           <Cycles />
           <div className='formRow'>
-            <button>Enviar</button>
+            <DefaultButton icon='Qualquer Coisa' />
           </div>
         </form>
       </Container>
