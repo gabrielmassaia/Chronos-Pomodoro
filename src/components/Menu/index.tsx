@@ -23,7 +23,6 @@ export function Menu() {
 
   return (
     <div className={styles.menu}>
-      <h1>{theme}</h1>
       <a
         className={styles.menuLink}
         href='#'
