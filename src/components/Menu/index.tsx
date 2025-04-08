@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HistoryIcon, HouseIcon, SettingsIcon, SunIcon } from 'lucide-react';
 
 type AvailableThemes = 'dark' | 'light';
@@ -12,14 +12,15 @@ export function Menu() {
   ) {
     event.preventDefault();
 
-    console.log('Clicado', Date.now());
-
     setTheme(prevTheme => {
       const nextTheme = prevTheme === 'dark' ? 'light' : 'dark';
       return nextTheme;
     });
   }
-  document.documentElement.setAttribute('data-theme', theme);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <div className={styles.menu}>
