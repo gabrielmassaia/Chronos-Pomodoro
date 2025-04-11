@@ -1,0 +1,19 @@
+.error {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none;
+  gap: 2.5rem;
+}
+
+.buttonHome {
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  height: 4rem;
+  width: 10rem;
+  background-color: var(--primary);
+  border-radius: 25px;
+  border: none;
+  color: var(--text-over-primary);
+}
