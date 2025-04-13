@@ -1,7 +1,7 @@
 import { TaskModel } from './TaskModel';
 
 export type TaskStateModel = {
-  task: TaskModel[];
+  tasks: TaskModel[];
   secondsReamaining: number;
   formattedSecondsRemaining: string;
   activeTask: TaskModel | null;
@@ -9,6 +9,6 @@ export type TaskStateModel = {
   config: {
     workTime: number;
     shortBreakTime: number;
-    lomgBreakTime: number;
+    longBreakTime: number;
   };
 };
