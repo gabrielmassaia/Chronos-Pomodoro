@@ -3,12 +3,24 @@ import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
 import { useRef } from 'react';
+import { TaskModel } from '../../models/TaskModel';
 
 export function MainForm() {
   const taskNameInput = useRef<HTMLInputElement>(null);
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (taskNameInput === null) return;
+
+    const taskName = taskNameInput.current.value.trim();
+    console.log(taskName);
+
+    if (!taskName) {
+      alert('Digite algo no input');
+    }
+
+    const newTask: TaskModel = {};
   }
   return (
     <form onSubmit={handleCreateNewTask} className='form' action=''>
