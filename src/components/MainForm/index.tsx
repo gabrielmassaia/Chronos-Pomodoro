@@ -5,10 +5,15 @@ import { DefaultInput } from '../DefaultInput';
 import { useRef } from 'react';
 import { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/UseTaskContext';
+import { getNextCycle } from '../../utils/getNextCycle';
 
 export function MainForm() {
-  const { setState } = useTaskContext();
+  const { state, setState } = useTaskContext();
   const taskNameInput = useRef<HTMLInputElement>(null);
+
+  // Verifica qual ciclo está
+  const nextCycle = getNextCycle(state.currentCycle);
+  console.log(nextCycle);
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -16,7 +21,6 @@ export function MainForm() {
     if (taskNameInput.current === null) return;
 
     const taskName = taskNameInput.current.value.trim();
-    console.log(taskName);
 
     if (!taskName) {
       alert('Digite algo no input');
@@ -39,7 +43,7 @@ export function MainForm() {
         ...prevState,
         config: { ...prevState.config },
         activeTask: newTask,
-        currentCycle: 1,
+        currentCycle: nextCycle,
         secondsRemaining,
         formattedSecondsRemaining: '00:00',
         tasks: [...prevState.tasks, newTask],
