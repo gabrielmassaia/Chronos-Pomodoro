@@ -6,6 +6,8 @@ import { useRef } from 'react';
 import { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/UseTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
+import { getNextCycleType } from '../../utils/getNextCycleType';
+import { formattedSecondsToMinuted } from '../../utils/formatedSecondsToMinutes';
 
 export function MainForm() {
   const { state, setState } = useTaskContext();
@@ -13,7 +15,10 @@ export function MainForm() {
 
   // Verifica qual ciclo está
   const nextCycle = getNextCycle(state.currentCycle);
-  console.log(nextCycle);
+  console.log('Proximo ciclo é: ', nextCycle);
+
+  const nextCycleType = getNextCycleType(nextCycle);
+  console.log('Tipo do ciclo: ', nextCycleType);
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -32,8 +37,8 @@ export function MainForm() {
       startDate: Date.now(),
       completeDate: null,
       interruptDate: null,
-      duration: 1,
-      type: 'workTime',
+      duration: state.config[nextCycleType],
+      type: nextCycleType,
     };
 
     const secondsRemaining = newTask.duration * 60;
@@ -45,7 +50,7 @@ export function MainForm() {
         activeTask: newTask,
         currentCycle: nextCycle,
         secondsRemaining,
-        formattedSecondsRemaining: '00:00',
+        formattedSecondsRemaining: formattedSecondsToMinuted(secondsRemaining),
         tasks: [...prevState.tasks, newTask],
       };
     });
