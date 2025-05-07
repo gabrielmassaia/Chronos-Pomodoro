@@ -1,4 +1,4 @@
-import { useTaskContext } from '../../contexts/TaskContext/UseTaskContext';
+import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import styles from './styles.module.css';
@@ -24,9 +24,10 @@ export function Cycles() {
           const nextCycleType = getNextCycleType(nextCycle);
           return (
             <span
+              key={nextCycle}
               className={`${styles.cyclesDot} ${styles[nextCycleType]}`}
               aria-label={`Ciclo atual: ${cycleDescriptionMap[nextCycleType]}`}
-              title={`Indicador do ciclo atual ${cycleDescriptionMap[nextCycleType]}`}
+              title={`Indicador do ciclo atual: ${cycleDescriptionMap[nextCycleType]}`}
             ></span>
           );
         })}

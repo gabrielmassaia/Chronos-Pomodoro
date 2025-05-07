@@ -4,7 +4,7 @@ import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
 import { useRef } from 'react';
 import { TaskModel } from '../../models/TaskModel';
-import { useTaskContext } from '../../contexts/TaskContext/UseTaskContext';
+import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { formattedSecondsToMinuted } from '../../utils/formatedSecondsToMinutes';
@@ -15,10 +15,7 @@ export function MainForm() {
 
   // Verifica qual ciclo está
   const nextCycle = getNextCycle(state.currentCycle);
-  console.log('Proximo ciclo é: ', nextCycle);
-
   const nextCycleType = getNextCycleType(nextCycle);
-  console.log('Tipo do ciclo: ', nextCycleType);
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -71,9 +68,11 @@ export function MainForm() {
         <p>Próximo intervalo é de 25min</p>
       </div>
 
-      <div className='formRow'>
-        <Cycles />
-      </div>
+      {state.currentCycle > 0 && (
+        <div className='formRow'>
+          <Cycles />
+        </div>
+      )}
 
       <div className='formRow'>
         <DefaultButton icon={<PlayCircleIcon />} />
