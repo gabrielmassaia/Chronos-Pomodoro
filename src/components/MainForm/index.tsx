@@ -45,23 +45,9 @@ export function MainForm() {
     //Pega evento dos botões
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
-    //Previne bug de renderização com o operador ternário dos 2 botões de Play/Stop
     e.preventDefault();
-
-    // setState(prevState => {
-    //   return {
-    //     ...prevState,
-    //     activeTask: null,
-    //     secondsRemaining: 0,
-    //     formattedSecondsRemaining: '00:00',
-    //     tasks: prevState.tasks.map(task => {
-    //       if (prevState.activeTask?.id === task.id) {
-    //         return { ...task, interruptDate: Date.now() };
-    //       }
-    //       return task;
-    //     }),
-    //   };
-    // });
+    dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
+    //Previne bug de renderização com o operador ternário dos 2 botões de Play/Stop
   }
 
   return (

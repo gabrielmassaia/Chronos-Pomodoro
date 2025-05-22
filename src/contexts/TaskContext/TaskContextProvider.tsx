@@ -15,7 +15,7 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
   }, [state]);
 
   return (
-    <TaskContext.Provider value={{ state, setState }}>
+    <TaskContext.Provider value={{ state, dispatch }}>
       {children}
     </TaskContext.Provider>
   );
