@@ -10,13 +10,17 @@ type TaskContextProviderProps = {
 export function TaskContextProvider({ children }: TaskContextProviderProps) {
   const [state, dispatch] = useReducer(taskReducer, initialTaskState);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  const [] = useReducer((state, action) => {
+    return state;
+  });
+
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
 
   return (
     <TaskContext.Provider value={{ state, setState }}>
-      {children}
+      <h1>Testando</h1>
     </TaskContext.Provider>
   );
 }
